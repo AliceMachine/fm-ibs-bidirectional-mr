@@ -1,0 +1,2 @@
+# 冻结仓库：不做换行符转换，保证各平台 checkout 后字节与 FROZEN.md 的 md5 一致
+* -text
