@@ -9,14 +9,17 @@
 
 固定/随机效应规则与单变量相同（Q P<0.05 -> 乘性随机），两模型都输出并标 primary。
 """
-import csv, json, sys, pathlib
+import csv, json, os, sys, pathlib
 import numpy as np
 
-sys.path.insert(0, r"C:/Users/柯莉尔/.workbuddy/skills/00-MR全流程总控/scripts")
+# ---- 路径：不依赖任何本机目录（见 README「运行环境」） ----------------------
+REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
+DATA_ROOT = pathlib.Path(os.environ.get("MR_PROJECT_ROOT", REPO_ROOT))
+sys.path.insert(0, str(REPO_ROOT / "engine"))
 import mr_engine as eng
 
-BASE = pathlib.Path(__file__).resolve().parent.parent / "04-数据"   # 04-数据
-OUT = BASE.parent / "05-分析"
+BASE = DATA_ROOT / "04-数据"   # 04-数据
+OUT = DATA_ROOT / "05-分析"
 OUT.mkdir(exist_ok=True)
 
 MODELS = [

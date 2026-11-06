@@ -12,15 +12,18 @@
 import csv
 import json
 import math
+import os
 import sys
 from pathlib import Path
 
 import numpy as np
 
-BASE = Path(r"D:/2027/workbuddy working/021/MR演练")
+# ---- 路径：不依赖任何本机目录（见 README「运行环境」） ----------------------
+REPO_ROOT = Path(__file__).resolve().parents[1]
+BASE = Path(os.environ.get("MR_PROJECT_ROOT", REPO_ROOT))
 OUT = BASE / "11-返修"
 IV = BASE / "04-数据" / "iv"
-sys.path.insert(0, r"C:/Users/柯莉尔/.workbuddy/skills/00-MR全流程总控/scripts")
+sys.path.insert(0, str(REPO_ROOT / "engine"))
 import mr_engine as me  # noqa: E402
 
 PALIN = {("A", "T"), ("T", "A"), ("C", "G"), ("G", "C")}

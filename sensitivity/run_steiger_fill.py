@@ -21,14 +21,17 @@
 """
 import csv
 import json
+import os
 import sys
 from pathlib import Path
 
-SKILL_SCRIPTS = Path(r"C:\Users\柯莉尔\.workbuddy\skills\00-MR全流程总控\scripts")
-sys.path.insert(0, str(SKILL_SCRIPTS))
+# ---- 路径：不依赖任何本机目录（见 README「运行环境」） ----------------------
+REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT / "engine"))
 import mr_engine as me  # noqa: E402
 
-BASE = Path(r"D:\2027\workbuddy working\021\MR演练\06-敏感性")
+DATA_ROOT = Path(os.environ.get("MR_PROJECT_ROOT", REPO_ROOT))
+BASE = DATA_ROOT / "06-敏感性"
 BASE.mkdir(parents=True, exist_ok=True)
 
 HARMONISE = Path(r"D:\2027\workbuddy working\021\MR演练\04-数据\harmonise")

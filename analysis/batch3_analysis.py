@@ -6,15 +6,21 @@
 import csv
 import json
 import math
+import os
 import sys
 from pathlib import Path
 
 import numpy as np
 
-BASE = Path(r"D:/2027/workbuddy working/021/MR演练")
+# ---- 路径：不依赖任何本机目录 ----------------------------------------------
+# 本文件在 <仓库根>/analysis/ 下，故仓库根 = 上两级。
+# 数据若不在仓库内，用环境变量 MR_PROJECT_ROOT 指向原工程根
+# （其下应有 04-数据 / 05-分析 / 06-敏感性 / 11-返修 等目录）。
+REPO_ROOT = Path(__file__).resolve().parents[1]
+BASE = Path(os.environ.get("MR_PROJECT_ROOT", REPO_ROOT))
 OUT = BASE / "11-返修"
 OUT.mkdir(exist_ok=True)
-sys.path.insert(0, r"C:/Users/柯莉尔/.workbuddy/skills/00-MR全流程总控/scripts")
+sys.path.insert(0, str(REPO_ROOT / "engine"))
 import mr_engine as me  # noqa: E402
 
 H = BASE / "04-数据" / "harmonise"

@@ -29,15 +29,24 @@ suppressPackageStartupMessages({
   library(gt)
 })
 
-# ---- 2. 路径（只改 D_ROOT 一处就能换电脑） ----------------------------------
-D_ROOT  <- "D:/2027/workbuddy working/021"   # ← 改这里
-D_PROJ  <- "MR演练"
+# ---- 2. 路径：不依赖任何本机目录 -------------------------------------------
+# 本文件在 <仓库根>/figures/ 下，故仓库根 = 上一级。
+# 数据与出图目录若不在仓库内，用环境变量 MR_PROJECT_ROOT 指向原工程根
+# （其下应有 04-数据 / 05-分析 / 06-敏感性 / 07-图表 等目录）：
+#   Rscript gen_figures_tables.R      # 数据就在仓库里
+#   MR_PROJECT_ROOT=/path/to/project Rscript gen_figures_tables.R
+.script_dir <- local({
+  a <- commandArgs(trailingOnly = FALSE)
+  f <- sub("^--file=", "", a[grep("^--file=", a)])
+  if (length(f)) dirname(normalizePath(f[1], mustWork = FALSE)) else getwd()
+})
+REPO_ROOT <- normalizePath(file.path(.script_dir, ".."), mustWork = FALSE)
+
+BASE    <- Sys.getenv("MR_PROJECT_ROOT", unset = REPO_ROOT)
 D_04    <- "04-数据"
 D_05    <- "05-分析"
 D_06    <- "06-敏感性"
 D_07    <- "07-图表"
-
-BASE    <- file.path(D_ROOT, D_PROJ)
 FIG_OUT <- file.path(BASE, D_07, "R", "figures")   # 图输出
 TAB_OUT <- file.path(BASE, D_07, "R", "tables")    # 表输出
 SUP_OUT <- file.path(BASE, D_07, "R", "figures_supp")  # 补充图输出

@@ -22,6 +22,26 @@ a bidirectional Mendelian randomisation study》的分析代码，随文提交�
 - R 4.5.1，作图需 `dplyr`、`ggplot2`、`gt`、`jsonlite`、`patchwork`、`scales`
 - **随机种子 20260922**（Bootstrap 与置换检验一律使用该种子）
 
+### 数据放在哪里（没有任何写死的路径）
+
+仓库里的脚本**不含任何绝对路径**。解析规则只有一条：
+
+- 若设置了环境变量 `MR_PROJECT_ROOT`，就用它作为数据根目录（其下应有
+  `04-数据/`、`05-分析/`、`06-敏感性/`、`07-图表/`、`11-返修/`）；
+- 没设时，数据根目录 = **本仓库根目录**（即脚本所在目录的上一级）。
+
+```bash
+# 情形一：数据就放在仓库里（按 RUN_MANIFEST.md 放好后）
+python analysis/run_mvmr.py
+
+# 情形二：数据在别处
+MR_PROJECT_ROOT=/path/to/project python analysis/run_mvmr.py          # Linux / macOS
+set MR_PROJECT_ROOT=D:\my\project && python analysis\run_mvmr.py      # Windows cmd
+```
+
+R 脚本同理：`MR_PROJECT_ROOT=/path/to/project Rscript figures/gen_figures_tables.R`。
+`engine/` 始终取自本仓库，不依赖任何外部安装。
+
 ## 快速自检
 
 ```bash
@@ -52,4 +72,8 @@ figures/       正文与补充材料的作图脚本（R）
 
 ## 许可
 
-代码以 MIT 许可发布；数据版权归各原始数据集所有，使用时请引用其对应文献。
+代码以 **MIT** 许可发布，全文见 `LICENSE`；数据版权归各原始数据集所有，使用时请引用其对应文献。
+
+## 引用
+
+若使用本仓库代码，请引用对应论文（投稿中，接收后在此补 DOI）。

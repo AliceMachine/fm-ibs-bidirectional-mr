@@ -4,15 +4,16 @@
 先复算全集 IVW 与 05-分析 JSON 比对验证重构忠实（容差 1e-6），
 再对剔离群后子集跑同一引擎 ivw(model='fixed')，输出 beta/se/CI/P。
 """
-import csv, json, math, pathlib, sys
+import csv, json, math, os, pathlib, sys
 
 import numpy as np
 
-BASE = pathlib.Path(__file__).resolve().parent
-PROJ = BASE.parent
+# ---- 路径：不依赖任何本机目录（见 README「运行环境」） ----------------------
+REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
+PROJ = pathlib.Path(os.environ.get("MR_PROJECT_ROOT", REPO_ROOT))
+BASE = PROJ / "05-分析"          # 原分析结果 JSON 所在目录
 IV = PROJ / "04-数据" / "iv"
-ENGINE_DIR = r"C:\Users\柯莉尔\.workbuddy\skills\00-MR全流程总控\scripts"
-sys.path.insert(0, ENGINE_DIR)
+sys.path.insert(0, str(REPO_ROOT / "engine"))
 import mr_engine as eng  # noqa: E402
 
 def load_assoc(path, beta_col="beta", se_col="se", rsid_col="rsid",
