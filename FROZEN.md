@@ -12,7 +12,8 @@
 > （`analysis/` 下 5 个、`sensitivity/run_steiger_fill.py`、`figures/_common.R`）。
 > **只动路径解析；算法、参数、随机种子（20260922）、数值逻辑一行未改。**
 > 改后 `python engine/mr_engine.py --selftest` 仍 **20/20 通过**。
-> 本表 md5 按改后文件列出；改动前的 md5 见首个提交 `02fcce1`。
+> 本表 md5 按改后文件列出；改动前的原始 md5 见**本仓库的首次提交**
+> （`git log --reverse` 第一条，标题 "Frozen analysis code for FM-IBS bidirectional MR manuscript"）。
 
 | 分组 | 文件名 | 原位置（工程内相对路径） | 字节 | md5 |
 |---|---|---|---|---|
