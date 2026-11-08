@@ -1,2 +1,2 @@
-# 冻结仓库：不做换行符转换，保证各平台 checkout 后字节与 FROZEN.md 的 md5 一致
-* -text
+# 全仓库统一 LF：仓库内存 LF、checkout 也出 LF，保证 md5 在任何平台一致；同时保留文本 diff 能力
+* text=auto eol=lf
