@@ -74,6 +74,14 @@ figures/       正文与补充材料的作图脚本（R）
 
 代码以 **MIT** 许可发布，全文见 `LICENSE`；数据版权归各原始数据集所有，使用时请引用其对应文献。
 
-## 引用
+## 作者与出处
 
-若使用本仓库代码，请引用对应论文（投稿中，接收后在此补 DOI）。
+本仓库对应论文（投稿中，接收后在此补 DOI）：
+
+> **Genetic liability to fibromyalgia and risk of irritable bowel syndrome: a bidirectional Mendelian randomisation study**
+> Aiting Feng, Jianhua Liu — The Second Clinical College of Guangzhou University of Chinese Medicine
+
+- Aiting Feng（第一作者）— ORCID [0009-0009-6073-8991](https://orcid.org/0009-0009-6073-8991)
+- Jianhua Liu（通讯作者，corresponding）— ORCID [0000-0003-4111-6993](https://orcid.org/0000-0003-4111-6993) · jianhualiu@gzucm.edu.cn
+
+若使用本仓库代码，请引用对应论文。仓库所有者账号名与本仓库的对应关系可通过上述 ORCID 核验。
